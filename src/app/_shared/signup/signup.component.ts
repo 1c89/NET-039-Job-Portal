@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AuthState } from 'src/app/_models/appstate';
 import { User } from 'src/app/_models/user';
+import { authenticateUserActions } from 'src/app/_store/authenticate/authenticate.actions';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +14,7 @@ export class SignupComponent implements OnInit {
 
   signupForm!: FormGroup;
 
-  constructor() { }
+  constructor(private store:Store<AuthState>) { }
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -22,6 +25,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.signupForm);
+    this.store.dispatch(authenticateUserActions.signUp(this.signupForm.value));
+    console.log(this.signupForm.value);
   }
 }

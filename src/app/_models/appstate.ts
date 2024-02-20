@@ -7,6 +7,7 @@ export interface AppState{
 //Features
 export interface AuthState {
     isAuthenticated:boolean,
-    user: User | null,
+    user: string | null,
+    token:string | null,
     errorMessage:string | null
 }
