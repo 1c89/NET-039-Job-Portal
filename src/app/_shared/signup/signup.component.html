@@ -1,0 +1,38 @@
+<div class="container col-md-6 offset-md-3 mt-5">
+  <div class="card">
+    <h4 class="card-header">New user</h4>
+    <div class="card-body">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input
+              type="text"
+              formControlName="email"
+              class="form-control"
+              placeholder="enter your email"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input
+              type="password"
+              formControlName="password"
+              class="form-control"
+              autocomplete="on"
+              placeholder="enter a password"
+            />
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <!-- <a routerLink="/home" class="btn btn-success">Cancel</a> -->
+        </div>
+        <p>
+          <span>Already have an account?</span>
+          <a routerLink="/login" class="btn btn-link">Log in!</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
