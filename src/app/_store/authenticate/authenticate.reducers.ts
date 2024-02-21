@@ -37,5 +37,18 @@ export const authenticateReducer = createReducer(
     user: '',
     token: '',
     errorMessage: null,
+  })),
+  
+  on(authenticateUserActions.signUpError, (state, { errorMessage }) => ({
+    ...state,
+    isAuthenticated: false,
+    user: '',
+    token: '',
+    errorMessage: errorMessage,
+  })),
+  
+  on(authenticateUserActions.clearErrorMessage, (state) => ({
+    ...state,
+    errorMessage: null,
   }))
 );

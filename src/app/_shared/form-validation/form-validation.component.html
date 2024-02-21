@@ -1,0 +1,3 @@
+<div id="validationemailFeedback" [ngStyle]="{'display':feedbackMessage.isTouched ? 'block':'none'}"  [ngClass]="feedbackMessage.isValid ? 'valid-feedback' : 'invalid-feedback' ">
+    {{feedbackMessage.isValid ? feedbackMessage.validFeedbackText :feedbackMessage.invalidFeedbackText}}
+  </div>

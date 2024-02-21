@@ -1,38 +1,63 @@
-<div class="container col-md-6 offset-md-3 mt-5">
-  <div class="card">
-    <h4 class="card-header">New user</h4>
-    <div class="card-body">
-      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-          <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input
-              type="text"
-              formControlName="email"
-              class="form-control"
-              placeholder="enter your email"
-            />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input
-              type="password"
-              formControlName="password"
-              class="form-control"
-              autocomplete="on"
-              placeholder="enter a password"
-            />
-          </div>
-        </div>
-        <div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-          <!-- <a routerLink="/home" class="btn btn-success">Cancel</a> -->
-        </div>
-        <p>
-          <span>Already have an account?</span>
-          <a routerLink="/login" class="btn btn-link">Log in!</a>
-        </p>
-      </form>
-    </div>
-  </div>
+<div class="container-fluid offset-md-3 mt-5">
+  <div class="row mt-5">
+     <div class="col">
+         <div class="col-md-6">
+             <div class="card">
+                 <h4 class="card-header">Sign-up</h4>
+                 <div *ngIf="errorMessage">
+                     <div class="alert alert-danger mt-2" role="alert">
+                         {{errorMessage}}
+                     </div>
+                 </div>
+                 <div class="card-body">
+                     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                         <div class="mb-3">
+                             <div class="form-group">
+                             <label class="form-label">Email</label>
+                             <input type="text" formControlName="email" class="form-control" [ngClass]="validateControl('email')"  
+                                 placeholder="enter your email">
+                             <app-form-validation [feedbackMessage]="validationMessage('email',['Correct','Please provide a valid email'],'validationemailFeedback')" ></app-form-validation>
+                         </div>
+                         </div>
+                         <div class="mb-3">
+                             
+                             <div class="form-group">
+                             <label class="form-label">Password</label>
+                             <input type="password" formControlName="password" class="form-control" autocomplete="on" [ngClass]="validateControl('password')"
+                                 placeholder="enter a password">
+                             <app-form-validation [feedbackMessage]="validationMessage('password',['OK','Enter your pasword'],'validationemailFeedback')" ></app-form-validation>
+                         </div>
+ 
+                        </div>
+                        <div class="mb-3">
+                        <div class="form-check ">
+                          <input class="form-check-input" type="checkbox" value="" formControlName="termsCheck" [ngClass]="validateControl('termsCheck')">
+                          <label class="form-check-label" for="termsCheck">
+                            I accept terms and conditions
+                          </label>
+                          <app-form-validation [feedbackMessage]="validationMessage('termsCheck',['','You must accept user agreement to proceed'],'validationemailFeedback')" ></app-form-validation>                          
+                        </div>
+                        </div>
+                                                
+                         <div class="row">
+                             <div class="col md-8">
+                                 <button type="submit" [disabled]="!thisForm.valid" class = "btn btn-primary">Sign-up </button>
+                             </div>
+                             <div class="col md-4">
+                                 <div class="row">
+                                     <div class="col-md-6">
+                                         <p class="mt-2">Have account? </p>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <a routerLink="../login" class="btn btn-link">Login</a>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </form>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
 </div>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "net-039-job-portal": {
+      "hosting": {
+        "NET-039-Job-Portal": [
+          "net-039-job-portal"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "net-039-job-portal"
+  }
+}

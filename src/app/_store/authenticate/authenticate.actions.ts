@@ -7,9 +7,16 @@ export const authenticateUserActions = createActionGroup({
     events : {
         'Log In': props<{credentials:LoginCredentials}>(),
         'Log Out': emptyProps(),
+        'Logout Error': props<({errorMessage:string|null})>(),
+        
         'Login Success': props<{authResponse:any}>(),
-        'Login Error': props<({errorMessage:string})>(),
+        'Login Error': props<({errorMessage:string|null})>(),
+        'Clear Error Message': emptyProps(),
+        
         'Sign Up': props<{credentials:LoginCredentials}>(),
+        'Sign Up Success': emptyProps(),
+        'Sign Up Error': props<({errorMessage:string|null})>(),
+
     }
 });
 

@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "NET-039-Job-Portal",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

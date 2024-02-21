@@ -1,31 +1,52 @@
-<div class="container col-md-6 offset-md-3 mt-5">
-    <!-- <div *ngIf="error" class="alert alert-danger">{{error}}</div> -->
-    <div class="card">
-        <h4 class="card-header">Login</h4>
-        <div *ngIf="errorMessage">
-            <div class="alert alert-danger" role="alert">
-              {{errorMessage}}
+<div class="container-fluid offset-md-3 mt-5">
+     <div class="row mt-5">
+        <div class="col">
+            <div class="col-md-6">
+                <div class="card">
+                    <h4 class="card-header">Login</h4>
+                    <div *ngIf="errorMessage">
+                        <div class="alert alert-danger mt-2" role="alert">
+                            {{errorMessage}}
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="text" formControlName="email" class="form-control" [ngClass]="validateControl('email')"  
+                                    placeholder="enter your email">
+                                <app-form-validation [feedbackMessage]="validationMessage('email',['Correct','Please provide a valid email'],'validationemailFeedback')" ></app-form-validation>
+                            </div>
+                            </div>
+                            <div class="mb-3">
+                                
+                                <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" formControlName="password" class="form-control" autocomplete="on" [ngClass]="validateControl('password')"
+                                    placeholder="enter a password">
+                                <app-form-validation [feedbackMessage]="validationMessage('password',['OK','Enter your pasword'],'validationemailFeedback')" ></app-form-validation>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col md-8">
+                                    <button type="submit" [disabled]="!thisForm.valid" class = "btn btn-primary">Login </button>
+                                </div>
+                                <div class="col md-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="mt-2">Not registered? </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a routerLink="../sign-up" class="btn btn-link">Sign-up</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="card-body">
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="text" formControlName="email"  class="form-control"  placeholder="enter your email">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" formControlName="password" class="form-control" autocomplete="on"  placeholder="enter a password">
-                </div>
-                <div>
-                    <button class="btn btn-primary">
-                        <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span> -->
-                        Login
-                    </button>
-                    <p>Not registered? <span><a routerLink="../sign-up" class="btn btn-link">Sign-up</a></span></p>
-                    
-                </div>
-            </form>
         </div>
     </div>
 </div>
