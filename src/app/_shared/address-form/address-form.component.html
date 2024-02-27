@@ -16,11 +16,17 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label class="form-label">Country</label>
-                <input type="text" formControlName="country" class="form-control" placeholder="Country" />
+                <select formControlName="country" class="form-select"  (change)="onCountryChange($event)" aria-label="Country">
+                    <option *ngFor="let c of countryList" [value]="c" [selected]="c===selectedCountry">{{c}}</option>
+                    <!-- <option selected>{{selectedCountry}}</option> -->
+                </select>
             </div>
             <div class="col-md-2 mb-3">
                 <label class="form-label">Province</label>
-                <input type="text" formControlName="province" class="form-control" placeholder="Province" />
+                <select formControlName="country" class="form-select" (change)="onProvinceChange($event)"aria-label="Country">
+                    <option *ngFor="let s of provinceList" [value]="s" [selected]="s===selectedProvince">{{s}}</option>
+                    <!-- <option selected>{{selectedProvince}}</option> -->
+                </select>
             </div>
             <div class="col-md-2 mb-3">
                 <label class="form-label">Postal code</label>

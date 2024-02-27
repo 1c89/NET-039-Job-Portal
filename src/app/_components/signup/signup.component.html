@@ -1,0 +1,101 @@
+<div class="container-fluid offset-md-3 mt-5">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="col-md-6">
+                <div class="card">
+                    <h4 class="card-header">Sign-up</h4>
+                    <div *ngIf="errorMessage$ | async">
+                        <div class="alert alert-danger mt-2" role="alert">
+                            {{errorMessage$ | async}}
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="text" formControlName="email" class="form-control"
+                                        [ngClass]="validateControl('email')" placeholder="enter your email">
+                                    <app-form-validation
+                                        [feedbackMessage]="validationMessage('email',['Correct','Please provide a valid email'],'validationemailFeedback')"></app-form-validation>
+                                    <div *ngIf="thisForm.get('email')!.hasError('emailAlreadyExists')"
+                                        class='invalid-feedback'>
+                                        User with this email already <strong>exists</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" formControlName="password" class="form-control"
+                                        autocomplete="on" [ngClass]="validateControl('password')"
+                                        placeholder="enter a password">
+                                    <app-form-validation
+                                        [feedbackMessage]="validationMessage('password',['OK','Enter your pasword'],'validationemailFeedback')"></app-form-validation>
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <input type="password" formControlName="confirmPassword" class="form-control"
+                                        autocomplete="on" [ngClass]="validateControl('confirmPassword')"
+                                        placeholder="confirm password">
+                                    <app-form-validation
+                                        [feedbackMessage]="validationMessage('confirmPassword',['OK','Confirm your pasword'],'validationemailFeedback')"></app-form-validation>
+                                    <div *ngIf="signupForm.errors?.['passwordConfirmationMismatch']"
+                                        class="text-danger small">
+                                        <!-- class='is-invalid invalid-feedback' -->
+                                        Password and confirmation must <strong>match</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                        formControlName="companyProfile" >
+                                    <label class="form-check-label" for="companyProfile">
+                                        This is company account
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                        formControlName="termsCheck" [ngClass]="validateControl('termsCheck')">
+                                    <label class="form-check-label" for="termsCheck">
+                                        I accept terms and conditions
+                                    </label>
+                                    <app-form-validation
+                                        [feedbackMessage]="validationMessage('termsCheck',['','You must accept user agreement to proceed'],'validationemailFeedback')"></app-form-validation>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col md-6">
+                                    <button type="submit" [disabled]="!thisForm.valid" class="btn btn-primary">Sign-up
+                                    </button>
+                                </div>
+                                <div class="col md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="mt-2">Have account? </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a routerLink="../login" class="btn btn-link">Login</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

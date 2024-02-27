@@ -1,0 +1,15 @@
+  <nav class="navbar navbar-expand navbar-light bg-light px-3">
+    <div class="navbar-nav" *ngIf="(loggedIn$ | async) else nonAuth">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/profile">Profile</a>
+        <a class="nav-item nav-link" (click)="logout()" *ngIf="(loggedIn$ | async)">Logout ({{(user$ | async)?.email}})</a>
+    </div>
+    <ng-template #nonAuth>
+      <div class="navbar-nav">  
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/login"> Login</a>
+        <a class="nav-item nav-link" routerLink="/sign-up"> Sign-up</a>
+
+      </div>
+    </ng-template>
+</nav>

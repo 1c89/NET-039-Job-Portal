@@ -13,7 +13,9 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "resolveJsonModule": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2017",
@@ -24,6 +26,7 @@
     ]
   },
   "angularCompilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,

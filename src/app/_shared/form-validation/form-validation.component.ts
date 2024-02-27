@@ -7,6 +7,15 @@ export interface IValidationMessage
   invalidFeedbackText:string,
   elementId:string
 }
+
+export class ValidationMessage implements IValidationMessage
+{
+  isValid = false;
+  isTouched = false;
+  validFeedbackText = '';
+  invalidFeedbackText =''
+  elementId = '';
+}
 @Component({
   selector: 'app-form-validation',
   templateUrl: './form-validation.component.html',

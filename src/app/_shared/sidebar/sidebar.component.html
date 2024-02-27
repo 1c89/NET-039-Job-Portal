@@ -1,5 +1,9 @@
 <nav class="nav flex-column">
-    <a class="nav-link" routerLink="./personal" routerLinkActive="active">Profile</a>
-    <a class="nav-link" routerLink="./credentials">Credentials</a>
-
+  <a class="nav-link" routerLink="/profile/credentials">Credentials</a>  
+  <a *ngIf="!companyProfile; else company" class="nav-link" routerLink="/profile/individual" routerLinkActive="active">Profile</a>
+ 
+  <ng-template #company>
+    <a class="nav-link" routerLink="/profile/company" routerLinkActive="active">Company profile</a>  
+    <a class="nav-link" routerLink="/profile/company/jobs" routerLinkActive="active">Company's job postings</a>  
+  </ng-template>
   </nav>

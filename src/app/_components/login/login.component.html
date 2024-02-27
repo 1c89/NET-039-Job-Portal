@@ -1,0 +1,60 @@
+<div class="container-fluid offset-md-3 mt-5">
+     <div class="row mt-5">
+        <div class="col">
+            <div class="col-md-6">
+                <div class="card">
+                    <h4 class="card-header">Login</h4>
+                    <div *ngIf="(errorMessage$ | async)">
+                        <div class="alert alert-danger mt-2" role="alert">
+                            {{(errorMessage$ | async)?.message}}
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="text" formControlName="email" class="form-control" [ngClass]="validateControl('email')" (change)="onEmailChange()"  
+                                    placeholder="enter your email">
+                                <app-form-validation [feedbackMessage]="validationMessage('email',['Correct','Please provide a valid email'],'validationemailFeedback')" ></app-form-validation>
+                            </div>
+                            </div>
+                            <div class="mb-3">
+                                
+                                <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" formControlName="password" class="form-control" autocomplete="on" [ngClass]="validateControl('password')"
+                                    placeholder="enter a password">
+                                <app-form-validation [feedbackMessage]="validationMessage('password',['OK','Enter your pasword'],'validationemailFeedback')" ></app-form-validation>
+                            </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check ">
+                                  <input class="form-check-input" type="checkbox" value="" formControlName="remember" >
+                                  <label class="form-check-label" for="remember">
+                                    Remember me
+                                  </label>
+                                </div>
+                                </div>
+                            <div class="row">
+                                <div class="col md-8">
+                                    <button type="submit" [disabled]="!thisForm.valid" class = "btn btn-primary">Login </button>
+                                </div>
+                                <div class="col md-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="mt-2">Not registered? </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a routerLink="../sign-up" class="btn btn-link">Sign-up</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

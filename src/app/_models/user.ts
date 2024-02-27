@@ -1,11 +1,17 @@
-export class User {
+export interface IUser {
+    uid?: string;
+    displayName: string;
+    email: string;
+    companyProfile:boolean;
+}
+  
+export class User implements IUser {
 
-    id?: string;
-    email?: string;
-    password?: string;
-    firstName?: string;
-    lastName?: string;
-    token: string | null = null;
+    constructor (public uid: string,
+              public displayName: string,
+              public email: string,
+              public companyProfile:boolean) 
+    {}
 }
 
 export class AuthResponse{
